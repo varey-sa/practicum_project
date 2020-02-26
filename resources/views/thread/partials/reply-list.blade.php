@@ -1,7 +1,7 @@
 <div class="small well text-info reply-list" style="margin-left: 40px">
     <p>{{$reply->body}}</p>
-    <lead> by {{$reply->user->name}}</lead>
-
+    
+    @if(auth()->check() && auth()->user()->id == $comment->user_id)
     <div class="actions">
         {{--<a href="{{route('thread.edit',$thread->id)}}" class="btn btn-info btn-xs">Edit</a>--}}
 
@@ -45,5 +45,9 @@
             <input class="btn btn-xs btn-danger" type="submit" value="Delete">
         </form>
 
+    </div>
+    @endif
+    <div class="replyName">
+        <small> By:<a href="{{route('user_profile',$reply->user->name)}}"><b>{{$reply->user->name}}</b></a> at {{$reply->created_at->diffForHumans()}}</small>
     </div>
 </div>

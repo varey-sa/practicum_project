@@ -4,7 +4,9 @@
 
 @if(!empty($thread->solution))
     @if($thread->solution == $comment->id)
+    <div style="margin-button:3px">
         <button class="btn btn-success pull-right">Solution</button>
+    </div>
     @endif
 
 @else
@@ -25,7 +27,6 @@
 
 
 @endif
-<lead>{{$comment->user->name}}</lead>
 
 <div class="actions">
 
@@ -73,8 +74,12 @@
         {{method_field('DELETE')}}
         <input class="btn btn-xs btn-danger" type="submit" value="Delete">
     </form>
-    @endif 
+@endif 
 
+</div>
+<br>
+<div class="commentName">
+<small>{{$comment->user->name}}</small>
 </div>
 
 @section('js')
@@ -82,6 +87,7 @@
         function markAsSolution(threadId, solutionId,elem) {
             var csrfToken='{{csrf_token()}}';
             $.post('{{route('markAsSolution')}}', {solutionId: solutionId, threadId: threadId,_token:csrfToken}, function (data) {
+              console.log(data)
                 $(elem).text('Solution');
             });
         }
@@ -92,13 +98,13 @@
             $.post('{{route('toggleLike')}}', {commentId: commentId,_token:csrfToken}, function (data) {
                 console.log(data);
                if(data.message==='liked'){
-                   $(elem).addClass('liked');
+                   $(elem).addClass('liked').css({color:'red'});
                    $('#'+commentId+"-count").text(likesCount+1);
 //                   $(elem).css({color:'red'});
                }else{
 //                   $(elem).css({color:'black'});
                    $('#'+commentId+"-count").text(likesCount-1);
-                   $(elem).removeClass('liked');
+                   $(elem).removeClass('liked').css({color:'black'});
                }
             });
 

@@ -10,6 +10,9 @@
             {!! \Michelf\Markdown::defaultTransform($thread->thread)  !!}
         </div>
         <br>
+        <div class="singleThreadName">
+           <small> Post by:<a href="{{route('user_profile',$thread->user->name)}}"><b>{{$thread->user->name}}</b></a> at {{$thread->created_at->diffForHumans()}}</small>
+        </div>
 
         {{--@if(auth()->user()->id == $thread->user_id)--}}
         @can('update',$thread)
@@ -40,10 +43,10 @@
         <hr>
 
         {{--reply to comment--}}
-        <button class="btn btn-xs btn-default" onclick="toggleReply('{{$comment->id}}')">reply</button>
+        <div class="btn btn-xs btn-default button" onclick="toggleReply('{{$comment->id}}')">reply</div>
         <br>
         {{--//reply form--}}
-        <div style="margin-left: 50px" class="reply-form-{{$comment->id}} hidden">
+        <div style="margin-left: 50px" class="reply-form-{{$comment->id}}" id="">
 
             <form action="{{route('replycomment.store',$comment->id)}}" method="post" role="form">
                 {{csrf_field()}}
@@ -54,7 +57,7 @@
                 </div>
 
 
-                <button type="submit" class="btn btn-primary">Reply</button>
+                <button type="submit" class="btn btn-primary btn-xs">Reply</button>
             </form>
 
         </div>
@@ -67,7 +70,8 @@
 
 
     @endforeach
-    <br><br>
+    <br>
+    <br>
     @include('thread.partials.comment-form')
 
 @endsection

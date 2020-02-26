@@ -7,12 +7,13 @@ use App\Thread;
 use App\ThreadFilters;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\DB;
 
 class ThreadController extends Controller
 {
     function __construct()
     {
-        return $this->middleware('auth')->except(['index', 'show']);
+        return $this->middleware('auth')->except(['index', 'show','search']);
     }
 
 
@@ -51,9 +52,9 @@ class ThreadController extends Controller
         //validate
 
         $this->validate($request, [
-            'subject' => 'required|min:5',
+            'subject' => 'required',
             'tags'    => 'required',
-            'thread'  => 'required|min:10',
+            'thread'  => 'required',
 //            'g-recaptcha-response' => 'required|captcha'
         ]);
 
@@ -145,19 +146,20 @@ class ThreadController extends Controller
             if (request()->ajax()) {
                 return response()->json(['status' => 'success', 'message' => 'marked as solution']);
             }
-            return back()->withMessage('Marked as solution');
+            return redirect()->back()->withMessage('Marked as solution');
         }
 
 
     }
-    public function search()
+    public function search( Request $request)
     {
-        $query=request('query');
+        // $query=request('query');
 
-        $threads = Thread::search($query)->with('tags')->get();
+        // $threads = Thread::search($query)->with('tags')->get();
 
+        // return view('thread.index', compact('threads'));
+        $search = $request->get('search');
+        $threads = DB::table('threads')->where('thread', 'like', '%'.$search.'%')->paginate(5);
         return view('thread.index', compact('threads'));
-
-
     }
 }

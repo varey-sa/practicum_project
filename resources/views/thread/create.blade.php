@@ -48,8 +48,22 @@
 
     <script>
 
-        $(function () {
-            $('#tag').selectize();
-        })
+        // $(function () {
+        //     $('#tag').selectize();
+        // })
+        $('#tag').selectize({
+    delimiter: ',',
+    persist: false,
+    create: function(input) {
+        return {
+            value: input,
+            text: input
+        }
+    }
+});
     </script>
+<script src="{{ asset('vendor/unisharp/laravel-ckeditor/ckeditor.js') }}"></script>
+<script>
+    CKEDITOR.replace( 'thread' );
+</script>
 @endsection

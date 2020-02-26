@@ -28,3 +28,12 @@
 .threadUserName {
  float: right;
 }
+.singleThreadName {
+    float: right; 
+}
+.replyName {
+    float: right;  
+}
+.commentName {
+    float: right;  
+}
