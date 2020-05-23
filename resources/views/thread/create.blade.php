@@ -17,6 +17,12 @@
                 </div>
 
                 <div class="form-group">
+                    <label for="thread">Thread</label>
+                    <textarea class="form-control" name="thread" id="" placeholder="Input..."
+                    > {{old('thread')}}</textarea>
+                </div>
+
+                <div class="form-group">
                     <label for="tag">Tags</label>
                     <select name="tags[]" multiple id="tag">
                         {{-- todo add from db--}}
@@ -24,20 +30,16 @@
                             <option value="{{$tag->id}}">{{$tag->name}}</option>
                         @endforeach
                     </select>
+                    <small> select the existance tags or add new tag</small>
                 </div>
-
-                <div class="form-group">
-                    <label for="thread">Thread</label>
-                    <textarea class="form-control" name="thread" id="" placeholder="Input..."
-                    > {{old('thread')}}</textarea>
-                </div>
-
                 {{--  <div class="form-group">
                    {!! app('captcha')->display() !!}
                 </div>  --}}
 
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
+            @include('thread.partials.form_tag')
+
         </div>
     </div>
 

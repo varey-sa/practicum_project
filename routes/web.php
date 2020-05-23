@@ -40,3 +40,5 @@ Route::get('/user/profile/{user}', 'UserProfileController@index')->name('user_pr
 Route::get('/markAsRead',function(){
     auth()->user()->unreadNotifications->markAsRead();
 });
+
+Route::resource('/tag','TagController');
