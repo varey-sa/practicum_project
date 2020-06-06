@@ -37,11 +37,11 @@
 
     <div class="row">
 
-        {{-- <a class="appLink" href="{{ url('/') }}">
+        <a class="appLink" href="{{ url('/') }}">
                         <h2> Forum</h2>
         </a>
         <a class="btn addCol btn-success form-control"  href="{{route('thread.create')}}">Ask Question</a> <br>
-        <br> --}}
+        <br>
 
         @section('category')
 
