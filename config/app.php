@@ -176,7 +176,7 @@ return [
         App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-        Unisharp\Ckeditor\ServiceProvider::class,
+        // Unisharp\Ckeditor\ServiceProvider::class,
 
         //  Anhskohbo\NoCaptcha\NoCaptchaServiceProvider::class,
     ],
