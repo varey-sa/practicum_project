@@ -11,10 +11,12 @@
 |
 */
 
-Route::get('/', function () {
-    $threads=App\Thread::latest()->paginate(5);
-    return view('welcome',compact('threads'));
-});
+// Route::get('/', function () {
+//     $threads=App\Thread::latest()->paginate(5);
+//     return view('welcome',compact('threads'));
+// });
+
+Route::get('/', 'ThreadController@index');
 
 Auth::routes();
 
@@ -37,15 +39,15 @@ Route::post('comment/like','LikeController@toggleLike')->name('toggleLike');
 
 Route::get('/user/profile/{user}', 'UserProfileController@index')->name('user_profile')->middleware('auth');
 
-Route::get('/markAsRead',function(){
-    auth()->user()->unreadNotifications->markAsRead();
-});
+// Route::get('/markAsRead',function(){
+//     auth()->user()->unreadNotifications->markAsRead();
+// });
 
 Route::resource('/tag','TagController');
 
-Route::group(['middleware' => ['admin']], function () {
-    Route::get('/home', 'HomeController@index');
-});
+// Route::group(['middleware' => ['admin']], function () {
+//     Route::get('/home', 'HomeController@index');
+// });
 
 //admin routes
 // Route::group(['middleware' => ['get.menu']], function () {
