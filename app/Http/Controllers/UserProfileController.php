@@ -11,6 +11,9 @@ class UserProfileController extends Controller
 {
     public function index(User $user)
     {
+        // $role = Role::findById(1);
+        // $permission = Permission::create(['name'=>'Admin']);
+        // $role->givePermissionTo($permission);
        $threads=Thread::where('user_id',$user->id)->latest()->get();
 
        $comments=Comment::where('user_id',$user->id)->where('commentable_type','App\Thread')->get();
