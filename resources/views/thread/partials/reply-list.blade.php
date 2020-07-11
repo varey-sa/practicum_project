@@ -28,7 +28,7 @@
                                 </div>
 
 
-                                <button type="submit" class="btn btn-primary">Reply</button>
+                                <!-- <button type="submit" class="btn btn-primary">Reply</button> -->
                             </form>
 
                         </div>

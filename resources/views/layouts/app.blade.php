@@ -22,7 +22,7 @@
 </head>
 <body style="background-color: #f0f4f4">
     <div id="app">
-        <nav class="navbar navbar-default navbar-static-top">
+        <nav class="navbar navbar-default" style="position: fixed;">
                 <div class="navbar-header">
 
                     <!-- Collapsed Hamburger -->
@@ -78,7 +78,7 @@
 
         @yield('content')
     </div>
-
+    
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
 </body>

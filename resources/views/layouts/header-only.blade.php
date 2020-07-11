@@ -27,35 +27,8 @@
 @include('layouts.partials.navbar')
 
 @yield('banner')
+@yield('content')
 
-<div class="container">
-
-
-    @include('layouts.partials.error')
-
-    @include('layouts.partials.success')
-
-    <div class="row">
-
-        <a class="appLink" href="{{ url('/') }}">
-                        <h2> Forum</h2>
-        </a>
-        <a class="btn addCol btn-success form-control"  href="{{route('thread.create')}}">Ask Question</a> <br>
-        <br>
-
-        @section('category')
-
-            @include('layouts.partials.categories')
-        @show
-
-        <div class="col-md-9">
-            <div class="content-wrap ">
-                @yield('content')
-            </div>
-        </div>
-    </div>
-
-</div>
 </div>
 
 {{--<script src="https://code.jquery.com/jquery-3.1.1.min.js"--}}

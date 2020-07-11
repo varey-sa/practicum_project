@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
     <link rel="stylesheet" href="{{asset('css/custom.css')}}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.4/css/selectize.min.css">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <!-- Scripts -->
     <script>
@@ -25,33 +25,35 @@
 <body >
 <div id="app">
 @include('layouts.partials.navbar')
-
 @yield('banner')
-
-<div class="container">
+<div class="row" style=" margin: 15px">
+<div class="col-sm-7" style="float: left">
+        <div class="has-search">
+            <input type="text" class="form-control" placeholder="Search...">
+        </div>
+    </div>
+    <div class="col">
+        <a class="btn btn-primary" style="float: right"  href="{{route('thread.create')}}"><i class="fa fa-plus"></i>  Ask Question</a>
+    </div>
+</div>
+<div class="button-add"></div>
+<div class="thread-list-container">
 
 
     @include('layouts.partials.error')
 
     @include('layouts.partials.success')
 
-    <div class="row">
-
-        {{-- <a class="appLink" href="{{ url('/') }}">
-                        <h2> Forum</h2>
-        </a>
-        <a class="btn addCol btn-success form-control"  href="{{route('thread.create')}}">Ask Question</a> <br>
-        <br> --}}
-
-        @section('category')
+    <!-- <div class="row"></div> -->
+        <!-- @section('category')
 
             @include('layouts.partials.categories')
-        @show
+        @show -->
 
-        <div class="col-md-9">
-            <div class="content-wrap ">
+        <!-- <div class="col-md-9"> -->
+            <!-- <div class="content-wrap "> -->
                 @yield('content')
-            </div>
+            <!-- </div> -->
         </div>
     </div>
 
@@ -61,7 +63,6 @@
 {{--<script src="https://code.jquery.com/jquery-3.1.1.min.js"--}}
         {{--integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="--}}
         {{--crossorigin="anonymous"></script>--}}
-{{--<!-- Latest compiled and minified JS -->--}}
 {{--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>--}}
 <script src="{{asset('js/main.js')}}"></script>
 <script src="{{asset('js/app.js')}}"></script>

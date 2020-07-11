@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default navbar-static-top " style="background: #f0f4f4;">
+<nav class="navbar navbar-default" style="background: #f0f4f4;">
         <div class="navbar-header">
 
             <!-- Collapsed Hamburger -->
@@ -14,8 +14,8 @@
             <!-- <a class="navbar-brand" href="{{ url('/') }}">
                 {{ config('app.name', 'Laravel') }}
             </a> -->
-            <div style="padding: 15px">
-            <a class="navbar-brand" href="{{ url('/') }}">
+            <div>
+            <a class="navbar-brand logo-brand" href="{{ url('/') }}">
                 {{ config('app.name', 'Laravel') }}
             </a>
         
@@ -40,8 +40,8 @@
 
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                        {{ Auth::user()->name }} <span class="caret"></span>
-                        <img src="https://pitcoder.github.io/img/portfolio/thumbnails/avatar.png" alt="Avatar" class="avatar">
+                            <p class="user-name">{{ Auth::user()->name }}</p>
+                            <img src="https://pitcoder.github.io/img/portfolio/thumbnails/avatar.png" alt="Avatar" class="user-image">
                         </a>
                         <ul class="dropdown-menu" role="menu">
                             <li>

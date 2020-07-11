@@ -1,4 +1,4 @@
-@extends('layouts.logo_btn')
+@extends('layouts.front')
 @section('heading',"Threads")
 @section('content')
     @include('thread.partials.thread-list')

@@ -24,6 +24,8 @@
 }
 .threadDisplay {
     display: block;
+    font-size: 20px;
+    padding-top: 20px;
 }
 .threadUserName {
  float: right;
@@ -36,4 +38,98 @@
 }
 .commentName {
     float: right;  
+}
+.avatar {
+    vertical-align: baseline;
+  }
+.user-image {
+    vertical-align: baseline;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+  }
+.button-add {
+    border-bottom: 1px solid rgb(189, 186, 186);
+}
+.has-search .form-control {
+    padding-left: 2.375rem;
+}
+
+.has-search .form-control-feedback {
+    position: absolute;
+    z-index: 2;
+    display: block;
+    width: 2.375rem;
+    height: 2.375rem;
+    line-height: 2.375rem;
+    text-align: center;
+    pointer-events: none;
+    color: #aaa;
+}
+.thread-list-container {
+    margin: 25px;
+}
+.or-seperators {
+	margin: 20px 0 15px;
+	text-align: center;
+    border-top: 1px solid #e0e0e0;
+    padding: 0 10px;
+}
+.thread-body {
+    margin: 0px 30px 10px 30px;
+    font-size: 15px;
+}
+.user-name {
+    clear: both;
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-align: center;
+    vertical-align: baseline;
+    font-size: 20px;
+    text-decoration: none;
+    font-style: normal;
+}
+.logo-brand {
+    margin-top: 15px;
+}
+.panel-username {
+    clear: both;
+    display: inline-block;
+    overflow: hidden;
+    margin-left: 5px;
+    white-space: nowrap;
+    vertical-align: baseline;
+    font-size: 20px;
+}
+.thread-header {
+    margin-top: 0px !important;
+}
+.tags-thread {
+    clear: both;
+    display: inline-block;
+    overflow: hidden;
+    margin-left: 15px;
+    white-space: nowrap;
+    vertical-align: baseline;
+    font-size: 15px; 
+}
+.thread-title {
+    clear: both;
+    display: inline-block;
+    overflow: hidden;
+    margin-left: 5px;
+    white-space: nowrap;
+    vertical-align: baseline;
+    font-size: 20px; 
+}
+.user-single-image {
+    vertical-align: baseline;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+}
+.thread-details{
+    padding: 0px 30px 0px 30px;
+    font-size: 20px;
 }

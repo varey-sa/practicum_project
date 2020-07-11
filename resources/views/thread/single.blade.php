@@ -2,7 +2,12 @@
 
 
 @section('content')
-    <div class="content-wrap well">
+<div class="container">
+    <div class="content-wrap well" style="background: white;">
+                <a href="{{route('user_profile',$thread->user->name)}}" style="text-decoration: none;" >
+                    <img src="https://pitcoder.github.io/img/portfolio/thumbnails/avatar.png" alt="Avatar" class="user-single-image">
+                    <p class="threadDisplay panel-username"> {{$thread->user->name}}</p>
+                </a>
         <h4>{{$thread->subject}}</h4>
         <hr>
 
@@ -13,7 +18,6 @@
         <div class="singleThreadName">
            <small> Post by:<a href="{{route('user_profile',$thread->user->name)}}"><b>{{$thread->user->name}}</b></a> at {{$thread->created_at->diffForHumans()}}</small>
         </div>
-
         {{--@if(auth()->user()->id == $thread->user_id)--}}
         @can('update',$thread)
             <div class="actions">
@@ -32,20 +36,21 @@
         {{--@endif--}}
     </div>
     <hr>
-    <br>
-
+    <h2 style="text-align: center;"><b>ALL COMMENTS</b></h2>
+    <div class="or-seperators"></div>
     {{--Answer/comment--}}
-
+        <div class="btn btn-xs btn-default button" data-toggle="collapse" data-target="#collapseExample" aria-controls="collapseExample">reply</div>
     @foreach($thread->comments as $comment)
-        <div class="comment-list well well-lg">
+        <div class="content-wrap well">
            @include('thread.partials.comment-list')
         </div>
         <hr>
 
         {{--reply to comment--}}
-        <div class="btn btn-xs btn-default button" onclick="toggleReply('{{$comment->id}}')">reply</div>
+        <div class="btn btn-xs btn-default button" data-toggle="collapse" data-target="#collapseExample" aria-controls="collapseExample">reply</div>
         <br>
         {{--//reply form--}}
+        <div class="collapse" id="collapseExample">
         <div style="margin-left: 50px" class="reply-form-{{$comment->id}}" id="">
 
             <form action="{{route('replycomment.store',$comment->id)}}" method="post" role="form">
@@ -61,6 +66,7 @@
             </form>
 
         </div>
+        </div>
         <br>
 
         @foreach($comment->comments as $reply)
@@ -75,6 +81,7 @@
     @include('thread.partials.comment-form')
 
 @endsection
+</div>
 
 
 @section('js')

@@ -1,4 +1,4 @@
-@extends('layouts.front')
+@extends('layouts.header-only')
 
 @section('category')
     <div class="col-md-3" >
@@ -14,7 +14,7 @@
 @endsection
 
 @section('content')
-<div>
+<div class="container">
     
     <h3>{{$user->name}}'s latest Threads</h3>
 
