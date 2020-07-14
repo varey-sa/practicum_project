@@ -13,7 +13,7 @@ class ThreadController extends Controller
 {
     function __construct()
     {
-        return $this->middleware('auth')->except(['index', 'show','search']);
+        return $this->middleware('auth')->except(['index', 'show', 'search']);
     }
 
 
@@ -26,7 +26,7 @@ class ThreadController extends Controller
      */
     public function index(ThreadFilters $filters)
     {
-        $threads=Thread::filter($filters)->latest()->paginate(5);
+        $threads = Thread::filter($filters)->latest()->paginate(5);
 
         return view('thread.index', compact('threads'));
     }
@@ -55,7 +55,7 @@ class ThreadController extends Controller
             'subject' => 'required',
             'tags'    => 'required',
             'thread'  => 'required',
-//            'g-recaptcha-response' => 'required|captcha'
+            //            'g-recaptcha-response' => 'required|captcha'
         ]);
 
         //store
@@ -98,10 +98,10 @@ class ThreadController extends Controller
      */
     public function update(Request $request, Thread $thread)
     {
-//        if(auth()->user()->id !== $thread->user_id){
-//            abort(401,"unauthorized");
-//        }
-//
+        //        if(auth()->user()->id !== $thread->user_id){
+        //            abort(401,"unauthorized");
+        //        }
+        //
         $this->authorize('update', $thread);
         //validate
         $this->validate($request, [
@@ -114,7 +114,6 @@ class ThreadController extends Controller
         $thread->update($request->all());
 
         return redirect()->route('thread.show', $thread->id)->withMessage('Thread Updated!');
-
     }
 
     /**
@@ -125,9 +124,9 @@ class ThreadController extends Controller
      */
     public function destroy(Thread $thread)
     {
-//        if(auth()->user()->id !== $thread->user_id){
-//            abort(401,"unauthorized");
-//        }
+        //        if(auth()->user()->id !== $thread->user_id){
+        //            abort(401,"unauthorized");
+        //        }
         $this->authorize('update', $thread);
 
         $thread->delete();
@@ -148,10 +147,8 @@ class ThreadController extends Controller
             }
             return redirect()->back()->withMessage('Marked as solution');
         }
-
-
     }
-    public function search( Request $request)
+    public function search(Request $request)
     {
         // $query=request('query');
 
@@ -159,7 +156,7 @@ class ThreadController extends Controller
 
         // return view('thread.index', compact('threads'));
         $search = $request->get('search');
-        $threads = DB::table('threads')->where('thread', 'like', '%'.$search.'%')->paginate(5);
+        $threads = DB::table('threads')->where('thread', 'like', '%' . $search . '%')->paginate(5);
         return view('thread.index', compact('threads'));
     }
 }

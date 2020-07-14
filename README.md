@@ -3,7 +3,6 @@
 
 Clone repo
 
-	git clone https://github.com/webdevmatics/webdevforum.git
 Install the composer dependencies
 
 	composer install
@@ -17,3 +16,6 @@ Set application key
 And Migrate with
 
 `php artisan migrate`
+
+
+### use can query data from database in the model by write function and use it in blade file

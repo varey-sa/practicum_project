@@ -8,10 +8,10 @@ use Nicolaslopezj\Searchable\SearchableTrait;
 
 class Thread extends Model
 {
-    use CommentableTrait,SearchableTrait;
+    use CommentableTrait, SearchableTrait;
 
-    
-    protected $fillable=['subject','thread','user_id'];
+
+    protected $fillable = ['subject', 'thread', 'user_id'];
 
     protected $searchable = [
         /**
@@ -22,15 +22,15 @@ class Thread extends Model
          * @var array
          */
         'columns' => [
-            'comments.body'=>10,
+            'comments.body' => 10,
             'threads.subject' => 8,
             'threads.thread' => 8,
-             'users.name' => 1,
+            'users.name' => 1,
         ],
-         'joins' => [
-             'users' => ['users.id','threads.user_id'],
-             'comments' => ['comments.id','comments.commentable_id','comments.commentable_type','App\Thread'],
-         ],
+        'joins' => [
+            'users' => ['users.id', 'threads.user_id'],
+            'comments' => ['comments.id', 'comments.commentable_id', 'comments.commentable_type', 'App\Thread'],
+        ],
     ];
 
 
@@ -41,12 +41,16 @@ class Thread extends Model
 
     public function tags()
     {
-        return $this->belongsToMany(Tag::class,'tag_thread');
+        return $this->belongsToMany(Tag::class, 'tag_thread');
     }
 
-    public function scopeFilter($filterQuery,ThreadFilters $threadFilters)
+    public function scopeFilter($filterQuery, ThreadFilters $threadFilters)
     {
         $threadFilters->apply($filterQuery);
     }
 
+    public function countUser()
+    {
+        return self::where('user_id', $this->user_id)->get()->count();
+    }
 }

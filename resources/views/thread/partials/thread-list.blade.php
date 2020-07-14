@@ -47,6 +47,7 @@
                             {{$thread->user->name}}
                             <br>
                             Level: Cooper
+                            {{$thread->user->threads->count()}}
                         </div>
                     </div>
 
