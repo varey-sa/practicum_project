@@ -20,7 +20,7 @@
         ]) !!};
     </script>
 </head>
-<body style="background-color: #f0f4f4">
+<body style="background-color: #f0f4f4; color: #174062;">
     <div id="app">
         <nav class="navbar navbar-default" style="position: fixed;">
                 <div class="navbar-header">

@@ -1,6 +1,7 @@
 <a href="{{route('user_profile',$comment->user->name)}}" style="text-decoration: none;" >
                     <img src="https://pitcoder.github.io/img/portfolio/thumbnails/avatar.png" alt="Avatar" class="user-single-image">
                     <p class="threadDisplay panel-username"> {{$comment->user->name}}</p>
+                    {{ $thread->get()->count()}}
                 </a>
                 <hr>
                 <div class="container">

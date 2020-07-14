@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.header-only')
 
 @section('content')
 <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
@@ -16,7 +16,7 @@
                             <label for="name" class="control-label">Name</label>
                             <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
+                                <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" placeholder="username" required autofocus>
 
                                 @if ($errors->has('name'))
                                     <span class="help-block">
@@ -31,7 +31,7 @@
 
                             <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
+                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="example@gmail.com" required>
 
                                 @if ($errors->has('email'))
                                     <span class="help-block">
@@ -46,7 +46,7 @@
 
                             <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                                <input id="password" type="password" class="form-control" name="password" required>
+                                <input id="password" type="password" class="form-control" name="password" placeholder="********" required>
 
                                 @if ($errors->has('password'))
                                     <span class="help-block">
@@ -61,7 +61,7 @@
 
                             <div class="input-group">
                             <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
+                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation"  placeholder="********"  required>
                             </div>
                         </div>
                         <div class="or-seperator"><b>or</b></div>

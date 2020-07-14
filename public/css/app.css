@@ -12,6 +12,7 @@ html {
   font-family: sans-serif;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
+  color: #174062;
 }
 
 body {
@@ -1402,7 +1403,7 @@ body {
   font-family: "Raleway", sans-serif;
   font-size: 14px;
   line-height: 1.6;
-  color: #636b6f;
+  color: #174062;;
   background-color: #f5f8fa;
 }
 

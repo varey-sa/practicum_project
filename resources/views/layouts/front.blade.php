@@ -22,7 +22,7 @@
         ]) !!};
     </script>
 </head>
-<body >
+<body>
 <div id="app">
 @include('layouts.partials.navbar')
 @yield('banner')
