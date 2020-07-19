@@ -10,17 +10,22 @@ use Illuminate\Http\Request;
 class CommentController extends Controller
 {
 
+    function __construct()
+    {
+        return $this->middleware('auth');
+    }
+
     public function addThreadComment(Request $request, Thread $thread)
     {
-        $this->validate($request,[
-            'body'=>'required'
+        $this->validate($request, [
+            'body' => 'required'
         ]);
 
-//        $comment=new Comment();
-//        $comment->body=$request->body;
-//        $comment->user_id=auth()->user()->id;
-//
-//        $thread->comments()->save($comment);
+        //        $comment=new Comment();
+        //        $comment->body=$request->body;
+        //        $comment->user_id=auth()->user()->id;
+        //
+        //        $thread->comments()->save($comment);
 
         $thread->addComment($request->body);
 
@@ -31,8 +36,8 @@ class CommentController extends Controller
 
     public function addReplyComment(Request $request, Comment $comment)
     {
-        $this->validate($request,[
-            'body'=>'required'
+        $this->validate($request, [
+            'body' => 'required'
         ]);
 
         $comment->addComment($request->body);
@@ -51,11 +56,11 @@ class CommentController extends Controller
      */
     public function update(Request $request, Comment $comment)
     {
-        if($comment->user_id !== auth()->user()->id)
+        if ($comment->user_id !== auth()->user()->id)
             abort('401');
 
-        $this->validate($request,[
-            'body'=>'required'
+        $this->validate($request, [
+            'body' => 'required'
         ]);
 
         $comment->update($request->all());
@@ -71,12 +76,11 @@ class CommentController extends Controller
      */
     public function destroy(Comment $comment)
     {
-        if($comment->user_id !== auth()->user()->id)
+        if ($comment->user_id !== auth()->user()->id)
             abort('401');
 
         $comment->delete();
 
         return back()->withMessage('Deleted');
-
     }
 }

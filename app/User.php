@@ -40,4 +40,9 @@ class User extends Authenticatable
     {
         return $this->belongsToMany('App\role');
     }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
 }

@@ -8,37 +8,11 @@
     <h3 class="container">{{$comment->body}} </h3>
 </div>
 <hr>
-@if(!empty($thread->solution))
-<!-- @if($thread->solution == $comment->id)
-    <div style="margin-button:3px">
-        <button class="btn btn-success">Solution</button>
-    </div> -->
-@endif
-
-@else
-{{--@if(auth()->check())--}}
-{{--@if(auth()->user()->id == $thread->user_id)--}}
-{{--//solution--}}
-{{--<form action="{{route('markAsSolution')}}" method="post">--}}
-{{--{{csrf_field()}}--}}
-{{--<input type="hidden" name="threadId" value="{{$thread->id}}">--}}
-{{--<input type="hidden" name="solutionId" value="{{$comment->id}}">--}}
-{{--<input type="submit" class="btn btn-success pull-right" id="{{$comment->id}}" value="Mark As Solution">--}}
-{{--</form>--}}
-@can('update',$thread)
-<!-- <div  class="btn btn-success pull-right" onclick="markAsSolution('{{$thread->id}}','{{$comment->id}}',this)">Mark as solution</div> -->
-@endcan
-{{--@endif--}}
-{{--@endif--}}
-
-
-@endif
 
 <div class="actions">
     <button class="btn btn-default btn-xs" id="{{$comment->id}}-count">{{$comment->likes()->count()}}</button>
     <span class="btn btn-default btn-xs  {{$comment->isLiked()?"liked":""}}"
         onclick="likeIt('{{$comment->id}}',this)"><span class="glyphicon glyphicon-heart"></span></span>
-    {{--<a href="{{route('thread.edit',$thread->id)}}" class="btn btn-info btn-xs">Edit</a>--}}
 
     @if(auth()->check() && auth()->user()->id == $comment->user_id)
     <a class="btn btn-primary btn-xs" data-toggle="modal" href="#{{$comment->id}}">edit</a>
@@ -86,46 +60,8 @@
 
 @section('js')
 <script>
-function markAsSolution(threadId, solutionId, elem) {
-    var csrfToken = '{{csrf_token()}}';
-    $.post('{{route('
-        markAsSolution ')}}', {
-            solutionId: solutionId,
-            threadId: threadId,
-            _token: csrfToken
-        },
-        function(data) {
-            console.log(data)
-            $(elem).text('Solution');
-        });
-}
-
-function likeIt(commentId, elem) {
-    var csrfToken = '{{csrf_token()}}';
-    var likesCount = parseInt($('#' + commentId + "-count").text());
-    $.post('{{route('
-        toggleLike ')}}', {
-            commentId: commentId,
-            _token: csrfToken
-        },
-        function(data) {
-            console.log(data);
-            if (data.message === 'liked') {
-                $(elem).addClass('liked').css({
-                    color: 'red'
-                });
-                $('#' + commentId + "-count").text(likesCount + 1);
-                //                   $(elem).css({color:'red'});
-            } else {
-                //                   $(elem).css({color:'black'});
-                $('#' + commentId + "-count").text(likesCount - 1);
-                $(elem).removeClass('liked').css({
-                    color: 'black'
-                });
-            }
-        });
-
+function likeIt() {
+    console.log("hello")
 }
 </script>
-
 @endsection

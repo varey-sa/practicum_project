@@ -8,7 +8,7 @@ class Comment extends Model
 {
     use CommentableTrait, LikableTrait;
 
-    protected $fillable=['body','user_id'];
+    protected $fillable = ['body', 'user_id'];
     /**
      * Get all of the owning commentable models.
      */
@@ -21,4 +21,9 @@ class Comment extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    // public function thread()
+    // {
+    //     return $this->belongsTo(Thread::class);
+    // }
 }

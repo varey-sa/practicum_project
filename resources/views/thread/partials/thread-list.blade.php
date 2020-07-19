@@ -15,8 +15,7 @@
             <a href="{{route('thread.show',$thread->id)}}" style="text-decoration: none; color: #174062;">
                 <div class="thread-body" style="vertical-align: baseline;">
                     <h3 class="thread-title" style="color: #174062"><b>Q:</b> {{$thread->subject}}</h3>
-                    <h4 class="tags-thread"> html </h4>
-                    <!-- <p>{{str_limit($thread->thread,1000) }}</p> -->
+                    <h4 class="tags-thread"> {{ $thread->tags}} </h4>
                     {!! \Michelf\Markdown::defaultTransform(str_limit($thread->thread,1000) ) !!}
                 </div>
             </a>
@@ -34,11 +33,11 @@
         </div>
     </div>
     <!-- modal profile -->
-    <div class="modal fade modal-custom" id="{{$thread->user->id}}">
+    <div class="modal fade" id="{{$thread->user->id}}">
         <div class="modal-dialog">
-            <div class="modal-content">
+            <div class="modal-content modal-overall">
                 <div class="modal-header" style="border: none">
-                    <button type="button" class="close pull-left" data-dismiss="modal" aria-hidden="true">&times;
+                    <button type=" button" class="close pull-left" data-dismiss="modal" aria-hidden="true">&times;
                     </button>
                     <div style="text-align: center">
                         <img src="https://pitcoder.github.io/img/portfolio/thumbnails/avatar.png" alt="Avatar"
@@ -47,16 +46,44 @@
                             {{$thread->user->name}}
                             <br>
                             Level: Cooper
-                            {{$thread->user->threads->count()}}
+                            <br>
                         </div>
                     </div>
 
-
                 </div>
                 <div class="modal-body">
-
+                    <div class="row" style="margin-left: 15px">
+                        <div class="col-sm-4">
+                            <div class="row text-center row-header">
+                                total questions
+                            </div>
+                            <div class="row text-center row-body">
+                                {{$thread->user->threads->count()}}
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="row text-center row-header">
+                                total comment
+                            </div>
+                            <div class="row text-center row-body">
+                                {{$thread->user->comments->count()}}
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="row text-center  row-header">
+                                total comment
+                            </div>
+                            <div class="row text-center row-body">
+                                {{$thread->user->comments->count()}}
+                            </div>
+                        </div>
+                    </div>
+                    <div style="margin-left: 15px">
+                        <h3>Awords</h3>
+                        <img src="image/award.png" class="award-image" alt="award">
+                    </div>
                 </div>
-                <div class="modal-footer" style="border: none">
+                <div class="modal-footer" style="border: none;margin-bottom: 30px">
                     <div style="text-align: center">
                         <a href="{{route('user_profile',$thread->user->name)}}" class="btn btn-default"> butoon</a>
                     </div>
