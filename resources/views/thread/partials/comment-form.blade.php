@@ -5,7 +5,7 @@
         <legend>Create comment</legend>
 
         <div class="form-group">
-            <input type="text" class="form-control" name="body" id="" placeholder="Input...">
+            <textarea class="form-control" name="body" id="body" placeholder="Input..."></textarea>
         </div>
 
 
@@ -13,3 +13,9 @@
     </form>
 
 </div>
+@section('js')
+<script src="{{ asset('vendor/unisharp/laravel-ckeditor/ckeditor.js') }}"></script>
+<script>
+CKEDITOR.replace('body');
+</script>
+@endsection
