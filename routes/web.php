@@ -22,28 +22,29 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 
-Route::get('thread/search','ThreadController@search');
+Route::get('thread/search', 'ThreadController@search');
 
-Route::post('/thread/mark-as-solution','ThreadController@markAsSolution')->name('markAsSolution');
-Route::resource('/thread','ThreadController');
-
-
-Route::resource('comment','CommentController',['only'=>['update','destroy']]);
-
-Route::post('comment/create/{thread}','CommentController@addThreadComment')->name('threadcomment.store');
-
-Route::post('reply/create/{comment}','CommentController@addReplyComment')->name('replycomment.store');
+Route::post('/thread/mark-as-solution', 'ThreadController@markAsSolution')->name('markAsSolution');
+Route::resource('/thread', 'ThreadController');
 
 
-Route::post('comment/like','LikeController@toggleLike')->name('toggleLike');
+Route::resource('comment', 'CommentController', ['only' => ['update', 'destroy']]);
+
+Route::post('comment/create/{thread}', 'CommentController@addThreadComment')->name('threadcomment.store');
+
+Route::post('reply/create/{comment}', 'CommentController@addReplyComment')->name('replycomment.store');
+
+
+Route::post('comment/like', 'LikeController@toggleLike')->name('toggleLike');
 
 Route::get('/user/profile/{user}', 'UserProfileController@index')->name('user_profile')->middleware('auth');
+Route::get('/user/profile/{user}/edit', 'UserProfileController@editUser')->name('user_profile_edit')->middleware('auth');
 
 // Route::get('/markAsRead',function(){
 //     auth()->user()->unreadNotifications->markAsRead();
 // });
 
-Route::resource('/tag','TagController');
+Route::resource('/tag', 'TagController');
 
 // Route::group(['middleware' => ['admin']], function () {
 //     Route::get('/home', 'HomeController@index');

@@ -111,7 +111,22 @@
     <br>
     <br>
     <div id="comment-form">
-        @include('thread.partials.comment-form')
+        <div class="container">
+
+            <form action="{{route('threadcomment.store',$thread->id)}}" method="post" role="form">
+                {{csrf_field()}}
+                <!-- {{method_field('put')}} -->
+
+                <legend>Create comment</legend>
+
+                <div class="form-group">
+                    <label for="body">Comment</label>
+                    <textarea class="form-control" name="body" id="" placeholder="Input..."></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Comment</button>
+            </form>
+
+        </div>
     </div>
 
     @endsection
@@ -124,5 +139,9 @@
 function toggleReply(commentId) {
     $('.reply-form-' + commentId).toggleClass('hidden');
 }
+</script>
+<script src="{{ asset('vendor/unisharp/laravel-ckeditor/ckeditor.js') }}"></script>
+<script>
+CKEDITOR.replace('body');
 </script>
 @endsection

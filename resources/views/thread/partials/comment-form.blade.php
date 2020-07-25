@@ -1,4 +1,4 @@
-<div class="comment-form">
+<!-- <div class="comment-form">
 
     <form action="{{route('threadcomment.store',$thread->id)}}" method="post" role="form">
         {{csrf_field()}}
@@ -18,4 +18,4 @@
 <script>
 CKEDITOR.replace('body');
 </script>
-@endsection
+@endsection -->

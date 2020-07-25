@@ -55,7 +55,9 @@
 @endif
 <hr>
 <div class="container">
-    <h3 class="container">{{ucfirst($comment->body)}} </h3>
+    <h3 class="container">
+        {!! \Michelf\Markdown::defaultTransform(ucfirst($comment->body)) !!}
+    </h3>
 </div>
 <hr>
 

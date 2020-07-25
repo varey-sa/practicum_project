@@ -17,8 +17,8 @@
         @foreach($tags as $tag)
         <a href="{{route('thread.index',['tags'=>$tag->id])}}" class="list-group-item">
             <span class="badge">14</span>
-            {{$tag->name}}
-    </a>
+            #{{$tag->name}}
+        </a>
         @endforeach
 
     </ul>

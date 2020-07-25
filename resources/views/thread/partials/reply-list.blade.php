@@ -1,6 +1,5 @@
 <div class="small well text-info reply-list" style="margin-left: 40px">
     <p>{{$reply->body}}</p>
-
     @if(auth()->check() && auth()->user()->id == $comment->user_id)
     <div class="actions">
         {{--<a href="{{route('thread.edit',$thread->id)}}" class="btn btn-info btn-xs">Edit</a>--}}

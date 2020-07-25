@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default" style="background: #f0f4f4;">
+<nav class="navbar navbar-default" style="background: #f0f4f4">
     <div class="navbar-header">
 
         <!-- Collapsed Hamburger -->
@@ -14,7 +14,7 @@
                 {{ config('app.name', 'Laravel') }}
             </a> -->
         <div>
-            <a class="navbar-brand logo-brand" href="{{ url('/') }}">
+            <a class="navbar-brand logo-brand" style="margin-bottom: 12px" href="{{ url('/') }}">
                 {{ config('app.name', 'Laravel') }}
             </a>
 
@@ -31,8 +31,8 @@
         <ul class="nav navbar-nav navbar-right" style="margin-right: 30px">
             <!-- Authentication Links -->
             @if (Auth::guest())
-            <li><a href="{{ route('login') }}">Login</a></li>
-            <li><a href="{{ route('register') }}">Register</a></li>
+            <li><a href="{{ route('login') }}" style="margin-top: 9px; font-size: 20px">Login</a></li>
+            <li><a href="{{ route('register') }}" style="margin-top: 9px;  font-size: 20px">Register</a></li>
             @else
             {{--notification--}}
             <notification :userid="{{auth()->id()}}" :unreads="{{auth()->user()->unreadNotifications}}"></notification>
