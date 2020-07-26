@@ -36,13 +36,18 @@ class User extends Authenticatable
     {
         return $this->hasMany(Thread::class);
     }
-    public function roles()
-    {
-        return $this->belongsToMany('App\role');
-    }
+    // public function roles()
+    // {
+    //     return $this->belongsToMany('App\role');
+    // }
 
     public function comments()
     {
         return $this->hasMany(Comment::class);
+    }
+
+    public function adminPage()
+    {
+        return view('admin.index');
     }
 }

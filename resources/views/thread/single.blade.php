@@ -68,9 +68,8 @@
 <div>
     <h2 style="text-align: center;"><b>ALL COMMENTS</b></h2>
     <div class="or-seperators"></div>
-    {{--Answer/comment--}}
     @foreach($thread->comments as $comment)
-    <div class="content-wrap well">
+    <div class="thread-details">
         @include('thread.partials.comment-list')
     </div>
     <div class="or-seperators"></div>

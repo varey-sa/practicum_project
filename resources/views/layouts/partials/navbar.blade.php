@@ -17,6 +17,19 @@
             <a class="navbar-brand logo-brand" style="margin-bottom: 12px" href="{{ url('/') }}">
                 {{ config('app.name', 'Laravel') }}
             </a>
+            @role('admin')
+            <a class="navbar-brand logo-brand" style="margin-bottom: 12px" href="{{ url('/admin') }}">
+                Dashboard
+            </a>
+            <a class="navbar-brand logo-brand" style="margin-bottom: 12px" href="{{ url('/') }}">
+                Teacher dashboard
+            </a>
+            @endrole
+            @role('teacher')
+            <a class="navbar-brand logo-brand" style="margin-bottom: 12px" href="{{ url('/') }}">
+                Teacher dashboard
+            </a>
+            @endrole
 
         </div>
     </div>

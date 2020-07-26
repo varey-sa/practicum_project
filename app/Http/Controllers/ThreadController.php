@@ -4,10 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Tag;
 use App\Thread;
+use App\User;
 use App\ThreadFilters;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\DB;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 
 class ThreadController extends Controller
 {
@@ -27,7 +30,15 @@ class ThreadController extends Controller
     public function index(ThreadFilters $filters)
     {
         $threads = Thread::filter($filters)->latest()->paginate(5);
-
+        // $tag_name = DB::table('tag_thread')->where('thread_id',auth()->user()->first();
+        // Role::create(['name' => 'admin']);
+        // Role::create(['name' => 'student']);
+        // Role::create(['name' => 'teacher']);
+        // Permission::create(['name' => 'show admin']);
+        // $permission = Permission::findById('2');
+        // $role = Role::findById(1);
+        // $role->givePermissionTo($permission);
+        // return User::role('teacher')->get();
         return view('thread.index', compact('threads'));
     }
 
@@ -158,5 +169,10 @@ class ThreadController extends Controller
         $search = $request->get('search');
         $threads = DB::table('threads')->where('thread', 'like', '%' . $search . '%')->paginate(5);
         return view('thread.index', compact('threads'));
+    }
+
+    public function adminPage()
+    {
+        return 'heloo';
     }
 }
