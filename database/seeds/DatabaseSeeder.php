@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
             DB::table('users')->insert([
                 'name' => 'admin user',
                 'email' => 'admin@gmail.com',
+                'major' => 'Administrator',
                 'password' => Hash::make('11111111'),
                 'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
@@ -26,6 +27,7 @@ class DatabaseSeeder extends Seeder
             DB::table('users')->insert([
                 'name' => 'student1',
                 'email' => 'student1@gmail.com',
+                'major' => 'Freelancer',
                 'password' => Hash::make('11111111'),
                 'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
@@ -33,6 +35,7 @@ class DatabaseSeeder extends Seeder
             DB::table('users')->insert([
                 'name' => 'student2',
                 'email' => 'student2@gmail.com',
+                'major' => 'Developer',
                 'password' => Hash::make('11111111'),
                 'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
@@ -40,6 +43,7 @@ class DatabaseSeeder extends Seeder
             DB::table('users')->insert([
                 'name' => 'student',
                 'email' => 'student3@gmail.com',
+                'major' => 'Developer',
                 'password' => Hash::make('11111111'),
                 'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
@@ -47,6 +51,7 @@ class DatabaseSeeder extends Seeder
             DB::table('users')->insert([
                 'name' => 'teacher',
                 'email' => 'teacher@gmail.com',
+                'major' => 'lecturer',
                 'password' => Hash::make('11111111'),
                 'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
@@ -128,6 +133,80 @@ class DatabaseSeeder extends Seeder
                 'tag_id' => '3',
                 'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+            ]);
+
+            // role user
+            DB::table('roles')->insert([
+                'name' => 'admin',
+                'guard_name' => 'web',
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+            ]);
+            DB::table('roles')->insert([
+                'name' => 'teacher',
+                'guard_name' => 'web',
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+            ]);
+            DB::table('roles')->insert([
+                'name' => 'student',
+                'guard_name' => 'web',
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+            ]);
+
+            // permissions
+            DB::table('permissions')->insert([
+                'name' => 'show admin',
+                'guard_name' => 'web',
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+            ]);
+            DB::table('permissions')->insert([
+                'name' => 'show teacher',
+                'guard_name' => 'web',
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+            ]);
+
+            // model has permissions
+            DB::table('model_has_permissions')->insert([
+                'permission_id' => '1',
+                'model_type' => 'App\User',
+                'model_id' => '1'
+            ]);
+            DB::table('model_has_permissions')->insert([
+                'permission_id' => '2',
+                'model_type' => 'App\User',
+                'model_id' => '1'
+            ]);
+            DB::table('model_has_permissions')->insert([
+                'permission_id' => '2',
+                'model_type' => 'App\User',
+                'model_id' => '5'
+            ]);
+
+            //model has roles
+
+            DB::table('model_has_roles')->insert([
+                'role_id' => '1',
+                'model_type' => 'App\User',
+                'model_id' => '1'
+            ]);
+            DB::table('model_has_permissions')->insert([
+                'permission_id' => '2',
+                'model_type' => 'App\User',
+                'model_id' => '5'
+            ]);
+
+            //role has permission
+            DB::table('role_has_permissions')->insert([
+                'permission_id' => '1',
+                'role_id' => '1'
+            ]);
+            DB::table('role_has_permissions')->insert([
+                'permission_id' => '2',
+                'role_id' => '1'
             ]);
         }
     }

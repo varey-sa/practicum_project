@@ -39,10 +39,10 @@
                 </div>
             </div>
             @endcan
-            <a href="{{route('user_profile',$thread->user->name)}}" style="text-decoration: none;">
+            <a data-target="#{{$thread->user->id}}" data-toggle="modal" style="text-decoration: none;">
                 <img src="https://pitcoder.github.io/img/portfolio/thumbnails/avatar.png" alt="Avatar"
                     class="user-single-image">
-                <p class="threadDisplay panel-username"> {{$thread->user->name}}
+                <p class="threadDisplay panel-username"> {{ucfirst($thread->user->name)}}
                     <br> Level: Copper</p>
             </a>
         </div>
@@ -53,12 +53,13 @@
             </p>
         </div>
 
-        <div class="thread-details">
+        <div class="thread-details container container-fluid">
             {!! \Michelf\Markdown::defaultTransform($thread->thread) !!}
         </div>
         <br>
         <div class="singleThreadName">
-            <small> Post by:<a href="{{route('user_profile',$thread->user->name)}}"><b>{{$thread->user->name}}</b></a>
+            <small> Post by:<a
+                    href="{{route('user_profile',$thread->user->name)}}"><b>{{ucfirst($thread->user->name)}}</b></a>
                 at {{$thread->created_at->diffForHumans()}}</small>
         </div>
         {{--@endif--}}
@@ -69,11 +70,20 @@
     <h2 style="text-align: center;"><b>ALL COMMENTS</b></h2>
     <div class="or-seperators"></div>
     @foreach($thread->comments as $comment)
-    <div class="thread-details">
+    <div class="comment-details container container-fluid">
         @include('thread.partials.comment-list')
     </div>
-    <div class="or-seperators"></div>
+    <!-- modal comment user profile -->
+    @include('thread.partials.comment-modal-profile')
 
+    <!-- end modal user -->
+
+    <!-- modal user profile -->
+    @include('thread.partials.thread-modal-profile')
+
+    <!-- end modal user -->
+
+    <hr>
     {{--reply to comment--}}
 
     <br>

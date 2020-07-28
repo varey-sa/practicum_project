@@ -103,11 +103,13 @@
     clear: both;
     display: inline-block;
     overflow: hidden;
-    margin-left: 5px;
+    margin-left: 20px;
     white-space: nowrap;
     vertical-align: baseline;
     font-size: 20px;
     margin-top: 10px;
+    color:#174062;
+    font-style: bold;
 }
 .thread-header {
     margin-top: 0px 20px 0px 20px;
@@ -121,6 +123,7 @@
     white-space: nowrap;
     vertical-align: baseline;
     font-size: 15px; 
+    color:#174062;
 }
 .thread-title {
     clear: both;
@@ -143,6 +146,10 @@
     border-radius: 50%;
 }
 .thread-details{
+    margin: 0px 30px 0px 50px;
+    font-size: 25px;
+}
+.comment-details {
     margin: 0px 30px 0px 50px;
     font-size: 25px;
 }
@@ -201,4 +208,13 @@
 }
 .header-well {
     margin-bottom: 30px;
+}
+.glyphicon {
+    font-size: 20px;
+}
+.comment-body {
+    padding: 40px 0 40px 0;
+}
+.actions {
+    margin-left: 9%;
 }

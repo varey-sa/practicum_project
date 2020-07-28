@@ -26,7 +26,7 @@
     </script>
 </head>
 
-<body>
+<body style="background-color: #f0f4f4">
     <div id="app">
         @include('layouts.partials.navbar')
 

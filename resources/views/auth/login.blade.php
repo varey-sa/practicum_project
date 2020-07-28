@@ -4,7 +4,7 @@
 <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-social/5.1.1/bootstrap-social.css">
-<section style="background-color: #f0f4f4">
+<section style="background-color: #f0f4f4;">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
@@ -20,8 +20,7 @@
 
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-                                <input id="email" type="email" class="form-control" name="email"
-                                    value="{{ old('email') }}" placeholder="example@gmail.com" required autofocus>
+                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="example@gmail.com" required autofocus>
 
                                 @if ($errors->has('email'))
                                 <span class="help-block">
@@ -36,8 +35,7 @@
 
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                                <input id="password" type="password" class="form-control" name="password"
-                                    placeholder="********" required>
+                                <input id="password" type="password" class="form-control" name="password" placeholder="********" required>
 
                                 @if ($errors->has('password'))
                                 <span class="help-block">

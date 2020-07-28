@@ -45,9 +45,4 @@ class User extends Authenticatable
     {
         return $this->hasMany(Comment::class);
     }
-
-    public function adminPage()
-    {
-        return view('admin.index');
-    }
 }
