@@ -49,9 +49,10 @@
                     <img src="image/award.png" class="award-image" alt="award">
                 </div>
             </div>
-            <div class="modal-footer" style="border: none;margin-bottom: 30px">
+            <div class="modal-footer" style="border: none; margin-bottom: 30px">
                 <div style="text-align: center">
-                    <a href="{{route('user_profile',$thread->user->name)}}" class="btn btn-default"> My Profile</a>
+                    <a href="{{route('user_profile',$thread->user->name)}}"
+                        class="btn btn-default">{{ucfirst($thread->user->name)}}'s profile</a>
                 </div>
             </div>
         </div><!-- /.modal-content -->

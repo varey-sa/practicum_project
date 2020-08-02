@@ -51,7 +51,8 @@
             </div>
             <div class="modal-footer" style="border: none;margin-bottom: 30px">
                 <div style="text-align: center">
-                    <a href="{{route('user_profile',$comment->user->name)}}" class="btn btn-default"> My Profile</a>
+                    <a href="{{route('user_profile',$comment->user->name)}}" class="btn btn-default">
+                        {{ucfirst($comment->user->name)}}'s profile</a>
                 </div>
             </div>
         </div><!-- /.modal-content -->

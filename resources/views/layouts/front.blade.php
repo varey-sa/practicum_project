@@ -33,16 +33,14 @@
         <div class="row" style=" margin: 15px">
             <div class="col-sm-7" style="float: left">
                 <form action='thread/search' method=" POST">
-                    <div class="has-search">
-                        <input type="text" class="form-control" name="search" placeholder="Search...">
-                    </div>
-                    <div>
-                        <button type="submit"> claick</button>
-                    </div>
+                    <!-- <div class="has-search"> -->
+                    <input type="text" class="form-control" name="search" placeholder="Search...">
+
+                    <!-- </div> -->
                 </form>
             </div>
             <div class="col">
-                <a class="btn btn-primary" style="float: right" href="{{route('thread.create')}}"><i
+                <a class="btn btn-primary add-question" style="float: right" href="{{route('thread.create')}}"><i
                         class="fa fa-plus"></i> Ask Question</a>
             </div>
         </div>

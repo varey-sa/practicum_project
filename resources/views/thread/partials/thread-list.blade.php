@@ -47,4 +47,6 @@
 
     @endforelse
 </div>
-{!! $threads->render() !!}
+<div style="text-align: center; ">
+    {!! $threads->render() !!}
+</div>
