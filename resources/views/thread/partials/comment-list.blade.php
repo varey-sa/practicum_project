@@ -1,45 +1,38 @@
-<a href="{{route('user_profile',$comment->user->name)}}" style="text-decoration: none;" >
-                    <img src="https://pitcoder.github.io/img/portfolio/thumbnails/avatar.png" alt="Avatar" class="user-single-image">
-                    <p class="threadDisplay panel-username"> {{$comment->user->name}}</p>
-                </a>
-                <hr>
-                <div class="container">
-<h3 class="container">{{$comment->body}} </h3>
-</div>
-<hr>
+<a data-target="#{{$comment->user->id}}" data-toggle="modal" style="text-decoration: none;">
+    <img src="https://pitcoder.github.io/img/portfolio/thumbnails/avatar.png" alt="Avatar" class="user-image-comment">
+    <p class="threadDisplay panel-username"> {{ucfirst($comment->user->name)}} | Level: Copper</p>
+    <!-- {{ $thread->get()->count()}} -->
+</a>
+
 @if(!empty($thread->solution))
-    <!-- @if($thread->solution == $comment->id)
-    <div style="margin-button:3px">
-        <button class="btn btn-success">Solution</button>
-    </div> -->
-    @endif
+@if($thread->solution == $comment->id)
+<button class="btn btn-success pull-right">Solution</button>
+@endif
 
 @else
-    {{--@if(auth()->check())--}}
-        {{--@if(auth()->user()->id == $thread->user_id)--}}
-            {{--//solution--}}
-            {{--<form action="{{route('markAsSolution')}}" method="post">--}}
-                {{--{{csrf_field()}}--}}
-                {{--<input type="hidden" name="threadId" value="{{$thread->id}}">--}}
-                {{--<input type="hidden" name="solutionId" value="{{$comment->id}}">--}}
-                {{--<input type="submit" class="btn btn-success pull-right" id="{{$comment->id}}" value="Mark As Solution">--}}
-            {{--</form>--}}
-            @can('update',$thread)
-            <!-- <div  class="btn btn-success pull-right" onclick="markAsSolution('{{$thread->id}}','{{$comment->id}}',this)">Mark as solution</div> -->
-            @endcan
-        {{--@endif--}}
-    {{--@endif--}}
+@can('update',$thread)
+<div class="btn btn-success pull-right" onclick="markAsSolution('{{$thread->id}}','{{$comment->id}}',this)">Mark as
+    solution</div>
+@endcan
 
 
 @endif
-
-<div class="actions">
-    <button class="btn btn-default btn-xs" id="{{$comment->id}}-count" >{{$comment->likes()->count()}}</button>
-    <span  class="btn btn-default btn-xs  {{$comment->isLiked()?"liked":""}}" onclick="likeIt('{{$comment->id}}',this)"><span class="glyphicon glyphicon-heart"></span></span>
-    {{--<a href="{{route('thread.edit',$thread->id)}}" class="btn btn-info btn-xs">Edit</a>--}}
-    
-    @if(auth()->check() && auth()->user()->id == $comment->user_id)
-    <a class="btn btn-primary btn-xs" data-toggle="modal" href="#{{$comment->id}}">edit</a>
+@if(auth()->check() && auth()->user()->id == $comment->user_id)
+<div class=" dropdown show pull-right">
+    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
+        aria-haspopup="true" aria-expanded="false">
+        <span class="glyphicon glyphicon-cog pull-right"></span>
+    </a>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+        <a class="btn btn-primary btn-xs" data-toggle="modal" href="#{{$comment->id}}">edit</a>
+        <div>
+            <form action="{{route('comment.destroy',$comment->id)}}" method="POST" class="inline-it">
+                {{csrf_field()}}
+                {{method_field('DELETE')}}
+                <input class="btn btn-xs btn-danger" type="submit" value="Delete">
+            </form>
+        </div>
+    </div>
     <div class="modal fade" id="{{$comment->id}}">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -57,60 +50,77 @@
                             <legend>Edit comment</legend>
 
                             <div class="form-group">
-                                <input type="text" class="form-control" name="body" id=""
-                                       placeholder="Input..." value="{{$comment->body}}">
+                                <textarea type="text" class="form-control" name="body" id=""
+                                    placeholder="Input..."> {{$comment->body}}</textarea>
                             </div>
 
 
                             <button type="submit" class="btn btn-primary">Comment</button>
                         </form>
-
                     </div>
                 </div>
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
-
-
-    {{--//delete form--}}
-    <form action="{{route('comment.destroy',$comment->id)}}" method="POST" class="inline-it">
-        {{csrf_field()}}
-        {{method_field('DELETE')}}
-        <input class="btn btn-xs btn-danger" type="submit" value="Delete">
-    </form>
-@endif 
-
+</div>
+@endif
+<div>
+    <div class="container">
+        <div class="row comment-body" style="margin-left: 3px">
+            <div class="column" style="float: left">
+                <h1 style="font-size: 55px">A:</h1>
+            </div>
+            <div class="column" style="margin-left: 7%">
+                {!! \Michelf\Markdown::defaultTransform($comment->body) !!}
+            </div>
+        </div>
+    </div>
 </div>
 
+<div class="actions">
+    <button class="btn btn-default btn-xs" id="{{$comment->id}}-count">{{$comment->likes()->count()}}</button>
+    <span class="btn btn-default btn-xs  {{$comment->isLiked()?"liked":""}}"
+        onclick="likeIt('{{$comment->id}}',this)"><span class="glyphicon glyphicon-heart"></span></span>
+</div>
+
+
 @section('js')
-    <script>
-        function markAsSolution(threadId, solutionId,elem) {
-            var csrfToken='{{csrf_token()}}';
-            $.post('{{route('markAsSolution')}}', {solutionId: solutionId, threadId: threadId,_token:csrfToken}, function (data) {
-              console.log(data)
-                $(elem).text('Solution');
-            });
-        }
+<script>
+function markAsSolution(threadId, solutionId, elem) {
+    var csrfToken = '{{csrf_token()}}';
+    $.post("{{route('markAsSolution')}}", {
+            solutionId: solutionId,
+            threadId: threadId,
+            _token: csrfToken
+        },
+        function(data) {
+            $(elem).text('Solution');
+        });
+}
 
-        function likeIt(commentId,elem){
-            var csrfToken='{{csrf_token()}}';
-            var likesCount=parseInt($('#'+commentId+"-count").text());
-            $.post('{{route('toggleLike')}}', {commentId: commentId,_token:csrfToken}, function (data) {
-                console.log(data);
-               if(data.message==='liked'){
-                   $(elem).addClass('liked').css({color:'red'});
-                   $('#'+commentId+"-count").text(likesCount+1);
-//                   $(elem).css({color:'red'});
-               }else{
-//                   $(elem).css({color:'black'});
-                   $('#'+commentId+"-count").text(likesCount-1);
-                   $(elem).removeClass('liked').css({color:'black'});
-               }
-            });
+function likeIt(commentId, elem) {
+    var csrfToken = '{{csrf_token()}}';
+    var likesCount = parseInt($('#' + commentId + "-count").text());
+    $.post("{{route('toggleLike')}}", {
+            commentId: commentId,
+            _token: csrfToken
+        },
+        function(data) {
+            if (data.message === 'liked') {
+                $(elem).css({
+                    color: 'red'
+                });
+                $(elem).addClass('liked');
+                $('#' + commentId + "-count").text(likesCount + 1);
+            } else {
+                $(elem).css({
+                    color: 'black'
+                });
+                $('#' + commentId + "-count").text(likesCount - 1);
+                $(elem).removeClass('liked');
+            }
+        });
 
-        }
-
-
-    </script>
-
+}
+</script>
 @endsection

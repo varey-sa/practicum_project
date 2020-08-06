@@ -36,8 +36,13 @@ class User extends Authenticatable
     {
         return $this->hasMany(Thread::class);
     }
-    public function roles()
+    // public function roles()
+    // {
+    //     return $this->belongsToMany('App\role');
+    // }
+
+    public function comments()
     {
-        return $this->belongsToMany('App\role');
+        return $this->hasMany(Comment::class);
     }
 }

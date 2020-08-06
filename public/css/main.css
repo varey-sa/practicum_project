@@ -1,6 +1,11 @@
+
 .content-heading{
     margin-bottom:10px;
 }
+
+html {
+    scroll-behavior: smooth;
+  }  
 
 .main-content-heading{
     padding:0 30px;
@@ -25,7 +30,6 @@
 .threadDisplay {
     display: block;
     font-size: 20px;
-    padding-top: 20px;
 }
 .threadUserName {
  float: right;
@@ -46,6 +50,12 @@
     vertical-align: baseline;
     width: 50px;
     height: 50px;
+    margin-left: 30px;
+    border-radius: 50%;
+  }
+  .user-image-profile{
+    width: 70px;
+    height: 70px;
     border-radius: 50%;
   }
 .button-add {
@@ -70,14 +80,14 @@
     margin: 25px;
 }
 .or-seperators {
-	margin: 20px 0 15px;
+	margin: 30px 0 15px;
 	text-align: center;
-    border-top: 1px solid #e0e0e0;
+    border-top: 1px solid black;
     padding: 0 10px;
 }
 .thread-body {
     margin: 0px 30px 10px 30px;
-    font-size: 15px;
+    font-size: 14px;
 }
 .user-name {
     clear: both;
@@ -97,13 +107,17 @@
     clear: both;
     display: inline-block;
     overflow: hidden;
-    margin-left: 5px;
+    margin-left: 20px;
     white-space: nowrap;
     vertical-align: baseline;
     font-size: 20px;
+    margin-top: 10px;
+    color:#174062;
+    font-style: bold;
 }
 .thread-header {
-    margin-top: 0px !important;
+    margin-top: 0px 20px 0px 20px;
+
 }
 .tags-thread {
     clear: both;
@@ -113,23 +127,149 @@
     white-space: nowrap;
     vertical-align: baseline;
     font-size: 15px; 
+    color:#174062;
 }
 .thread-title {
     clear: both;
     display: inline-block;
     overflow: hidden;
-    margin-left: 5px;
     white-space: nowrap;
     vertical-align: baseline;
-    font-size: 20px; 
+    font-size: 25px; 
 }
 .user-single-image {
     vertical-align: baseline;
-    width: 70px;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+.user-image-comment{
+    vertical-align: baseline;
+    width:70px;
     height: 70px;
     border-radius: 50%;
 }
 .thread-details{
-    padding: 0px 30px 0px 30px;
+    margin: 0px 30px 0px 50px;
+    font-size: 25px;
+}
+.comment-details {
+    margin: 0px 30px 0px 50px;
+    font-size: 25px;
+}
+.thread-footer {
+    margin-top: 40px;
+
+}
+/* modal */
+.row-header {
+    border: 1px solid;
+    border-radius: 5px;
+    border-bottom: 0;
+    padding: 10px;
+    width:120px
+
+}
+.row-body{
+    border: 1px solid;
+    border-radius: 5px;
+    padding: 10px;
+    width:120px
+}
+.award-image {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+.modal-dialog {
+    -webkit-transform: translate(0,-50%);
+    -o-transform: translate(0,-50%);
+    transform: translate(0,-50%);
+    position: relative;
+    margin: 0 auto;
+    top: 15%
+}
+.modal-overall{
+    max-width: 80%;
+}
+.question-title{
+    font-size: 35px;
+    margin: 7px 0 3 10px;
+    vertical-align: baseline;
+    clear: both;
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.q-title{
+    font-size: 35px;
+    font-weight: bolder;
+    vertical-align: baseline;
+    clear: both;
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+}
+.header-well {
+    margin-bottom: 30px;
+}
+.glyphicon {
     font-size: 20px;
+}
+.comment-body {
+    padding: 40px 0 40px 0;
+}
+.actions {
+    margin-left: 9%;
+}
+.add-question {
+    display: inline-block;
+    background: #4258f4;
+    color: #fff;
+    text-transform: uppercase;
+    padding: 20px 30px;
+    border-radius: 5px;
+    box-shadow: 0  17px 10px -10px rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+    transition: all ease-in-out 300ms;
+}
+.add-question:hover {
+    box-shadow: 0  37px 20px -20px rgba(0, 0, 0, 0.2);
+    transform: translate(0, -2px);
+}
+input[type=text] {
+  width: 130px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  background-color: white;
+  background-image: url('searchicon.png');
+  background-position: 10px 10px; 
+  background-repeat: no-repeat;
+  padding: 12px 20px 12px 40px;
+  -webkit-transition: width 0.4s ease-in-out;
+  transition: width 0.4s ease-in-out;
+}
+
+input[type=text]:focus {
+  width: 100%;
+}
+
+.answer{
+   font-size: 25px; 
+   color: green;
+   display:inline-block; 
+   clear: both;  
+   white-space: nowrap;
+vertical-align: baseline;
+}
+.iconAnswer{
+ font-size:38px;
+ color:green;
+ display: inline-block; 
+white-space: nowrap;
+vertical-align: baseline;
+ clear: both;
+ margin-left: 5px;
 }
