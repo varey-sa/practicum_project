@@ -22,10 +22,11 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 
-Route::get('thread/search', 'ThreadController@search');
 
 Route::post('/thread/mark-as-solution', 'ThreadController@markAsSolution')->name('markAsSolution');
 Route::resource('/thread', 'ThreadController');
+Route::get('thread/search', 'ThreadController@search');
+
 
 
 Route::resource('comment', 'CommentController', ['only' => ['update', 'destroy']]);

@@ -3,6 +3,10 @@
     margin-bottom:10px;
 }
 
+html {
+    scroll-behavior: smooth;
+  }  
+
 .main-content-heading{
     padding:0 30px;
 }
@@ -250,4 +254,22 @@ input[type=text] {
 
 input[type=text]:focus {
   width: 100%;
+}
+
+.answer{
+   font-size: 25px; 
+   color: green;
+   display:inline-block; 
+   clear: both;  
+   white-space: nowrap;
+vertical-align: baseline;
+}
+.iconAnswer{
+ font-size:38px;
+ color:green;
+ display: inline-block; 
+white-space: nowrap;
+vertical-align: baseline;
+ clear: both;
+ margin-left: 5px;
 }

@@ -3,6 +3,20 @@
     <p class="threadDisplay panel-username"> {{ucfirst($comment->user->name)}} | Level: Copper</p>
     <!-- {{ $thread->get()->count()}} -->
 </a>
+
+@if(!empty($thread->solution))
+@if($thread->solution == $comment->id)
+<button class="btn btn-success pull-right">Solution</button>
+@endif
+
+@else
+@can('update',$thread)
+<div class="btn btn-success pull-right" onclick="markAsSolution('{{$thread->id}}','{{$comment->id}}',this)">Mark as
+    solution</div>
+@endcan
+
+
+@endif
 @if(auth()->check() && auth()->user()->id == $comment->user_id)
 <div class=" dropdown show pull-right">
     <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
@@ -72,8 +86,41 @@
 
 @section('js')
 <script>
-function likeIt() {
-    console.log("hello")
+function markAsSolution(threadId, solutionId, elem) {
+    var csrfToken = '{{csrf_token()}}';
+    $.post("{{route('markAsSolution')}}", {
+            solutionId: solutionId,
+            threadId: threadId,
+            _token: csrfToken
+        },
+        function(data) {
+            $(elem).text('Solution');
+        });
+}
+
+function likeIt(commentId, elem) {
+    var csrfToken = '{{csrf_token()}}';
+    var likesCount = parseInt($('#' + commentId + "-count").text());
+    $.post("{{route('toggleLike')}}", {
+            commentId: commentId,
+            _token: csrfToken
+        },
+        function(data) {
+            if (data.message === 'liked') {
+                $(elem).css({
+                    color: 'red'
+                });
+                $(elem).addClass('liked');
+                $('#' + commentId + "-count").text(likesCount + 1);
+            } else {
+                $(elem).css({
+                    color: 'black'
+                });
+                $('#' + commentId + "-count").text(likesCount - 1);
+                $(elem).removeClass('liked');
+            }
+        });
+
 }
 </script>
 @endsection

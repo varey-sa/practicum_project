@@ -149,7 +149,6 @@ class ThreadController extends Controller
     {
         $solutionId = Input::get('solutionId');
         $threadId = Input::get('threadId');
-
         $thread = Thread::find($threadId);
         $thread->solution = $solutionId;
         if ($thread->save()) {
@@ -166,9 +165,10 @@ class ThreadController extends Controller
         // $threads = Thread::search($query)->with('tags')->get();
 
         // return view('thread.index', compact('threads'));
-        $search = $request->get('search');
-        $threads = DB::table('threads')->where('thread', 'like', '%' . $search . '%')->paginate(5);
-        return view('thread.index', compact('threads'));
+        // $search = Input::get('name');
+        $search = $request->get('name');
+        $threads = DB::table('threads')->where('thread', 'like', '%' . 'name' . '%')->paginate(5);
+        return view('thread.index', ['threads' => $threads]);
     }
 
     public function adminPage()

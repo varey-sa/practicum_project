@@ -8,7 +8,11 @@
                 <p class="threadDisplay panel-username"> {{ucfirst($thread->user->name)}}</p>
             </a>
             <div class="pull-right">
-                <h3> answer </h3>
+                @if(!empty($thread->solution))
+                <p class="answer"> Answer </p>
+
+                <i class='far fa-check-circle iconAnswer'></i>
+                @endif
             </div>
         </div>
         <div>
