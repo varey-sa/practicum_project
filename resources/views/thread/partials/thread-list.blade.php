@@ -1,4 +1,4 @@
-<div>
+<div class="infinite-scroll">
     @forelse($threads as $thread)
     <div style="border: 1px solid #BDBBBB; padding: 10px; box-shadow: 2px 7px #DFDFDF;">
         <div class="thread-header" style="margin: 0 20px 0 3px">
@@ -50,7 +50,24 @@
     <h5>No threads</h5>
 
     @endforelse
+    <div style="text-align: center; ">
+        {!! $threads->render() !!}
+    </div>
 </div>
-<div style="text-align: center; ">
-    {!! $threads->render() !!}
-</div>
+@section('js')
+<script type="text/javascript">
+$('ul.pagination').hide();
+$(function() {
+    $('.infinite-scroll').jscroll({
+        autoTrigger: true,
+        loadingHtml: '<img class="center-block" src="/image/loading.gif" alt="Loading..." />',
+        padding: 0,
+        nextSelector: '.pagination li.active + li a',
+        contentSelector: 'div.infinite-scroll',
+        callback: function() {
+            $('ul.pagination').remove();
+        }
+    });
+});
+</script>
+@endsection
