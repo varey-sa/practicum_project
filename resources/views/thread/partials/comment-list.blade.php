@@ -12,7 +12,7 @@
 @else
 @can('update',$thread)
 <div class="btn btn-success pull-right" onclick="markAsSolution('{{$thread->id}}','{{$comment->id}}',this)">Mark as
-    solution</div>
+    solution </div>
 @endcan
 
 
