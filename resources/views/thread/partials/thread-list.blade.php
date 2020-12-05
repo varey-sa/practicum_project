@@ -20,7 +20,7 @@
                 <div class="thread-body" style="vertical-align: baseline;">
                     <h3 class="thread-title" style="color: #174062"><b>Q:</b> {{ucfirst($thread->subject)}}</h3>
 
-                    @foreach($tags as $tag)
+                    @foreach($thread->tags as $tag)
                     <a href="{{route('thread.index',['tags'=>$tag->id])}}">
                         <h4 class="tags-thread"> # {{ $tag->name}} </h4>
                     </a>
