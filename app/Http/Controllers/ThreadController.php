@@ -167,6 +167,12 @@ class ThreadController extends Controller
         // return view('thread.index', compact('threads'));
         // $search = Input::get('name');
         $search = $request->get('name');
+        var_dump($search);
+//         $threads = Thread::query()
+//             ->where('thread', 'LIKE', "%{$search}%")
+// //             ->orWhere('body', 'LIKE', "%{$search}%")
+//             ->get();
+//         return false;
         $threads = DB::table('threads')->where('thread', 'like', '%' . 'name' . '%')->paginate(5);
         return view('thread.index', ['threads' => $threads]);
     }

@@ -1,8 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+
 
 class AdminController extends Controller
 {
@@ -17,6 +20,12 @@ class AdminController extends Controller
      */
     public function index()
     {
+        $userqq = Auth::user();
+//         $users = DB::table('users')->where('users.id',)->get();
+//         foreach ($users as $user) {
+//              dd($user->name);
+//         };
+        dd($userqq);
     }
 
     /**

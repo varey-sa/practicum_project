@@ -16,15 +16,31 @@
 @section('content')
 <div class="container">
 
-    <h3>{{$user->name}}'s latest Threads</h3>
 
-    @forelse($threads as $thread)
-    <h5>{{$thread->subject}}</h5>
-
+    <mark><h3>{{$user->name}} latest Threads</h3></mark>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Thread</th>
+      <th scope="col">Create At</th>
+    </tr>
+  </thead>
+  <tbody>
+     @forelse($threads as $thread)
+        <tr>
+             <td>
+                <a href="/thread/{{$thread->id}}">{{$thread->subject}}</a>
+             </td>
+             <td>{{$thread->created_at->format('Y-m-d')}}&nbsp;&nbsp;&nbsp;&nbsp; (<i style="color: blue">{{$thread->created_at->diffForHumans()}}<i/>)</td>
+        </tr>
     @empty
-    <h5>No threads yet</h5>
-
+        <tr>
+             <td>No threads yet}</td>
+        </tr>
     @endforelse
+  </tbody>
+</table>
+
     <br>
     <hr>
 

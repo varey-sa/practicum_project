@@ -32,9 +32,9 @@
         @yield('banner')
         <div class="row" style=" margin: 15px">
             <div class="col-sm-7" style="float: left">
-                <form action="thread/search" method="get">
+                <form action="/thread/search" method="get">
                     <!-- <div class="has-search"> -->
-                    <input type="text" class="form-control" name="name" placeholder="Search...">
+                    <input type="text" class="form-control" name="search" placeholder="Search..aaa.">
 
                     <!-- </div> -->
                 </form>
