@@ -3,11 +3,12 @@
 @section('category')
 <div class="col-md-3">
     <div class="dp">
-        <img src="https://dummyimage.com/300x200/000/fff" alt="">
+        <img src="https://dummyimage.com/300x20j0/000/fff" alt="">
     </div>
     <h3>
         {{$user->name}}
     </h3>
+
 
 </div>
 
@@ -15,13 +16,31 @@
 
 @section('content')
 <div class="container">
-
+  <div class="jumbotron">
+  @auth
+  <h1>hello</h1>
+@endauth
+  <div class="center">
+  <img class="user-profile" src="/image/anime.jpg" alt="Italian Trulli"> &nbsp;&nbsp;
+    <h1 style=" font-size: 18px;text-transform: uppercase;">{{$user->name}}</h1>
+  </div>
+    <p>Bootstrap is the most popular HTML, CSS, and JS framework for developing responsive, mobile-first projects on the web.</p>
+    <ul>
+      <li class="list-group-item">Cras justo odio</li>
+      <li class="list-group-item">Dapibus ac facilisis in</li>
+      <li class="list-group-item">Morbi leo risus</li>
+      <li class="list-group-item">Porta ac consectetur ac</li>
+      <li class="list-group-item">Vestibulum at eros</li>
+    </ul>
+  </div>
+</div>
+<div class="container">
 
     <mark><h3>{{$user->name}} latest Threads</h3></mark>
 <table class="table table-striped">
   <thead>
     <tr>
-      <th scope="col">Thread</th>
+      <th scope="col">Questions</th>
       <th scope="col">Create At</th>
     </tr>
   </thead>
@@ -35,7 +54,7 @@
         </tr>
     @empty
         <tr>
-             <td>No threads yet}</td>
+             <td>No threads yet</td>
         </tr>
     @endforelse
   </tbody>
