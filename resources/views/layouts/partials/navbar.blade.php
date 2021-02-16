@@ -17,20 +17,6 @@
             <a class="navbar-brand logo-brand" style="margin-bottom: 12px" href="{{ url('/') }}">
                 {{ config('app.name', 'Laravel') }}
             </a>
-            @role('admin')
-            <a class="navbar-brand logo-brand" style="margin-bottom: 12px" href="{{ url('/admin') }}">
-                Dashboard
-            </a>
-            <a class="navbar-brand logo-brand" style="margin-bottom: 12px" href="{{ url('/') }}">
-                Teacher dashboard
-            </a>
-            @endrole
-            @role('teacher')
-            <a class="navbar-brand logo-brand" style="margin-bottom: 12px" href="{{ url('/') }}">
-                Teacher dashboard
-            </a>
-            @endrole
-
         </div>
     </div>
 
@@ -63,6 +49,19 @@
                             My Profile
                         </a>
 
+                        <a href="{{ route('user_profile_edit',auth()->user()) }}">
+                            Edit Profile
+                        </a>
+                         @role('admin')
+                         <a href="{{ route('user_profile_edit',auth()->user()) }}">
+                             Admin Dashboard
+                         </a>
+                         @endrole
+                         @role('teacher')
+                          <a href="{{ route('user_profile_edit',auth()->user()) }}">
+                              Teacher dashboard
+                          </a>
+                         @endrole
                         <a href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                             Logout

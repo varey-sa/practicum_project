@@ -16,7 +16,7 @@ class ThreadController extends Controller
 {
     function __construct()
     {
-        return $this->middleware('auth')->except(['index', 'show', 'search']);
+        return $this->middleware('auth')->except(['index', 'show', 'searchMe']);
     }
 
 
@@ -158,22 +158,14 @@ class ThreadController extends Controller
             return redirect()->back()->withMessage('Marked as solution');
         }
     }
-    public function search(Request $request)
+    public function searchMe(Request $request)
     {
-        // $query=request('query');
-
-        // $threads = Thread::search($query)->with('tags')->get();
-
-        // return view('thread.index', compact('threads'));
-        // $search = Input::get('name');
-        $search = $request->get('name');
-        var_dump($search);
-//         $threads = Thread::query()
-//             ->where('thread', 'LIKE', "%{$search}%")
-// //             ->orWhere('body', 'LIKE', "%{$search}%")
-//             ->get();
-//         return false;
-        $threads = DB::table('threads')->where('thread', 'like', '%' . 'name' . '%')->paginate(5);
+        $search = $request->input('search_key');
+        $threads = Thread::query()
+            ->where('thread', 'LIKE', "%{$search}%")
+            ->orWhere('subject', 'LIKE', "%{$search}%")
+            ->orderByDesc('created_at')
+            ->paginate(5);
         return view('thread.index', ['threads' => $threads]);
     }
 

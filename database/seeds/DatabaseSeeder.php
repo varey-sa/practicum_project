@@ -20,7 +20,10 @@ class DatabaseSeeder extends Seeder
                 'name' => 'admin user',
                 'email' => 'admin@gmail.com',
                 'major' => 'Administrator',
+                'role' => 'admin',
+                'phone_number' => '0106506010',
                 'password' => Hash::make('11111111'),
+                'is_active' => 1,
                 'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
             ]);
@@ -28,7 +31,10 @@ class DatabaseSeeder extends Seeder
                 'name' => 'student1',
                 'email' => 'student1@gmail.com',
                 'major' => 'Freelancer',
+                'role' => 'admin',
+                'phone_number' => '0106506010',
                 'password' => Hash::make('11111111'),
+                'is_active' => 1,
                 'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
             ]);
@@ -36,23 +42,32 @@ class DatabaseSeeder extends Seeder
                 'name' => 'student2',
                 'email' => 'student2@gmail.com',
                 'major' => 'Developer',
+                'role' => 'admin',
+                'phone_number' => '0106506010',
                 'password' => Hash::make('11111111'),
+                'is_active' => 1,
                 'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
             ]);
             DB::table('users')->insert([
-                'name' => 'student',
+                'name' => 'student2',
                 'email' => 'student3@gmail.com',
                 'major' => 'Developer',
+                'role' => 'admin',
+                'phone_number' => '0106506010',
                 'password' => Hash::make('11111111'),
+                'is_active' => 1,
                 'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
             ]);
             DB::table('users')->insert([
-                'name' => 'teacher',
-                'email' => 'teacher@gmail.com',
-                'major' => 'lecturer',
+                'name' => 'student2',
+                'email' => 'student4@gmail.com',
+                'major' => 'Developer',
+                'role' => 'admin',
+                'phone_number' => '0106506010',
                 'password' => Hash::make('11111111'),
+                'is_active' => 1,
                 'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
                 'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
             ]);

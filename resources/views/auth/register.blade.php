@@ -70,6 +70,22 @@
                                     name="password_confirmation" placeholder="********" required>
                             </div>
                         </div>
+
+                        <div class="form-group{{ $errors->has('profile_image') ? ' has-error' : '' }}">
+                            <label for="profile_image" class="control-label">Profile image</label>
+
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                                <input id="profile_image" type="file" class="form-control" name="profile_image"
+                                     required>
+                                @if ($errors->has('profile_image'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('profile_image') }}</strong>
+                                </span>
+                                @endif
+                            </div>
+                        </div>
+
                         <div class="or-seperator"><b>or</b></div>
                         <div class="col">
                             <!-- social login -->

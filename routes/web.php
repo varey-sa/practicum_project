@@ -16,16 +16,16 @@
 //     return view('welcome',compact('threads'));
 // });
 
-Route::get('/', 'ThreadController@index');
+Route::get('/thread', 'ThreadController@index');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index');
+Route::get('/', 'HomeController@index');
 
 
 Route::post('/thread/mark-as-solution', 'ThreadController@markAsSolution')->name('markAsSolution');
 Route::resource('/thread', 'ThreadController');
-Route::get('thread/search', 'ThreadController@search');
+Route::get('/threads/search', 'ThreadController@searchMe')->name('my_search');
 
 
 
