@@ -1,17 +1,23 @@
-@extends('layouts.app')
-
-@section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Dashboard</div>
-
-                <div class="panel-body">
-                    You are logged in!
-                </div>
-            </div>
-        </div>
+<!DOCTYPE html>
+<html>
+  <center>
+    <header>
+     <link href="{{ asset('css/search.css') }}" rel="stylesheet">
+    </header>
+      <img alt="Google" class="logo user-image-profile" src="/image/logo_search.jpg">
+    <div class="bar">
+    <form action="{{route('my_search')}}" method="GET" role="search">
+         <input class="searchbar" type="text" name="search_key" title="Search">
+         <button type="submit"><img class="voice" src="/image/search_icon.png" title="Search by Voice"></button>
+    </form>
     </div>
-</div>
-@endsection
+    <div class="buttons">
+    @if (Auth::guest())
+         <a href="/login" class="button" type="button">LOGIN</a>
+         <a href="/register" class="button" type="button">REGISTER</a>
+          <a href="/thread" class="button" type="button">EXPLORE AS GUEST</a>
+    @else
+    <a href="/thread" class="button" type="button">EXPLORE</a>
+    @endif
+     </div>
+  </body>
