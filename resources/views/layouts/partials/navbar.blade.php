@@ -10,12 +10,9 @@
         </button>
 
         <!-- Branding Image -->
-        <!-- <a class="navbar-brand" href="{{ url('/') }}">
-                {{ config('app.name', 'Laravel') }}
-            </a> -->
         <div>
             <a class="navbar-brand logo-brand" style="margin-bottom: 12px" href="{{ url('/') }}">
-                {{ config('app.name', 'Laravel') }}
+                SEARCH ME
             </a>
         </div>
     </div>

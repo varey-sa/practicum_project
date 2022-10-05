@@ -23,15 +23,18 @@
             </div>
 
             <div class="form-group">
-                <label for="type">Type</label>
-                <input type="text" class="form-control" name="type" id="" placeholder="Input..."
-                    value="{{$thread->type}}">
-            </div>
-
-            <div class="form-group">
                 <label for="thread">Thread</label>
                 <textarea class="form-control" name="thread" id=""
                     placeholder="Input..."> {{$thread->thread}} </textarea>
+            </div>
+            <div class="form-group">
+                <label for="tag">Tags</label>
+                <select name="tags[]" multiple id="tag">
+                    @foreach($thread->tags as $tag)
+                        <option value="{{$tag->id}}">{{$tag->name}}</option>
+                    @endforeach
+                </select>
+                <small> select the existence tags or add new tag</small>
             </div>
 
             <button type="submit" class="btn btn-primary">Submit</button>

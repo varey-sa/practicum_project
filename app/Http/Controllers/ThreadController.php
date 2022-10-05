@@ -116,9 +116,9 @@ class ThreadController extends Controller
         $this->authorize('update', $thread);
         //validate
         $this->validate($request, [
-            'subject' => 'required|min:10',
-            'type'    => 'required',
-            'thread'  => 'required|min:20'
+            'subject' => 'required',
+            'tags'    => 'required',
+            'thread'  => 'required'
         ]);
 
 

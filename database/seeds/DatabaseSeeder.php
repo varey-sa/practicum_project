@@ -17,7 +17,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     { {
             DB::table('users')->insert([
-                'name' => 'admin user',
+                'name' => 'Dara',
                 'email' => 'admin@gmail.com',
                 'major' => 'Administrator',
                 'role' => 'admin',
@@ -28,7 +28,7 @@ class DatabaseSeeder extends Seeder
                 'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
             ]);
             DB::table('users')->insert([
-                'name' => 'student1',
+                'name' => 'Rayuth',
                 'email' => 'student1@gmail.com',
                 'major' => 'Freelancer',
                 'role' => 'admin',
@@ -39,7 +39,7 @@ class DatabaseSeeder extends Seeder
                 'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
             ]);
             DB::table('users')->insert([
-                'name' => 'student2',
+                'name' => 'Malis',
                 'email' => 'student2@gmail.com',
                 'major' => 'Developer',
                 'role' => 'admin',
@@ -50,7 +50,7 @@ class DatabaseSeeder extends Seeder
                 'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
             ]);
             DB::table('users')->insert([
-                'name' => 'student2',
+                'name' => 'Alexa',
                 'email' => 'student3@gmail.com',
                 'major' => 'Developer',
                 'role' => 'admin',
@@ -61,7 +61,7 @@ class DatabaseSeeder extends Seeder
                 'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
             ]);
             DB::table('users')->insert([
-                'name' => 'student2',
+                'name' => 'Martin',
                 'email' => 'student4@gmail.com',
                 'major' => 'Developer',
                 'role' => 'admin',
@@ -109,6 +109,36 @@ class DatabaseSeeder extends Seeder
                 'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
             ]);
             // tag seed
+            DB::table('tags')->insert([
+                'name' => 'laravel',
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+            ]);
+            DB::table('tags')->insert([
+                'name' => 'Nodejs',
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+            ]);
+            DB::table('tags')->insert([
+                'name' => 'Python',
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+            ]);
+            DB::table('tags')->insert([
+                'name' => 'laravel',
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+            ]);
+            DB::table('tags')->insert([
+                'name' => 'Nodejs',
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+            ]);
+            DB::table('tags')->insert([
+                'name' => 'Python',
+                'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+                'updated_at' => Carbon::now()->format('Y-m-d H:i:s')
+            ]);
             DB::table('tags')->insert([
                 'name' => 'laravel',
                 'created_at' => Carbon::now()->format('Y-m-d H:i:s'),

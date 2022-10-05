@@ -13,11 +13,11 @@
     </div>
     <div class="buttons">
     @if (Auth::guest())
-         <a href="/login" class="button" type="button">LOGIN</a>
-         <a href="/register" class="button" type="button">REGISTER</a>
-          <a href="/thread" class="button" type="button">EXPLORE AS GUEST</a>
+         <a href="/login" class="button" type="button" style="text-decoration:none;">LOGIN</a>
+         <a href="/register" class="button" type="button" style="text-decoration:none;">REGISTER</a>
+          <a href="/thread" class="button" type="button" style="text-decoration:none;">EXPLORE AS GUEST</a>
     @else
-    <a href="/thread" class="button" type="button">EXPLORE</a>
+    <a href="/thread" class="button" type="button" style="text-decoration:none;">EXPLORE</a>
     @endif
      </div>
-  </body>
+  </center>
